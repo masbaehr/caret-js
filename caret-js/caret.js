@@ -28,13 +28,11 @@ const CaretJS = {
     update(e) {
         let input = e.target,
         pos = input.selectionStart,
+        max = (input.hasAttribute('maxlength') ? input.attributes.maxlength.value : -1),
         diff = 0;
 
-        if(e.type === 'keydown'){
-            if(e.ctrlKey){
-            }else if(CaretJS.var.char_keys.indexOf(e.code) > -1){
-                diff = 1;
-            }else if(e.code === "ArrowRight" && input.value.length > 0 && pos < input.value.length){
+        if(e.type === 'keydown' && !e.ctrlKey){
+            if((CaretJS.var.char_keys.indexOf(e.code) > -1 && (max === -1 || pos < max)) || (e.code === "ArrowRight" && input.value.length > 0 && pos < input.value.length)){
                 diff = 1;
             }else if(CaretJS.var.left_keys.indexOf(e.code) > -1 && pos > 0){
                 diff = -1;
