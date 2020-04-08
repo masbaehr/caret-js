@@ -1,0 +1,20 @@
+{
+  "name": "caret-js",
+  "version": "1.0.0",
+  "description": "A Javascript plugin for customizable terminal-style carets.",
+  "main": "dist/caret.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masbaehr/caret-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masbaehr/caret-js/issues"
+  },
+  "homepage": "https://github.com/masbaehr/caret-js#readme"
+}

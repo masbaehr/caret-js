@@ -1,0 +1,38 @@
+.caretjs {
+    display: inline-block;
+    font-family: monospace;
+}
+
+.caretjs+span {
+    font-family: monospace;
+    background: transparent;
+    position: relative;
+    right: 0;
+    margin: 0;
+}
+
+.caretjs+span>span {
+    animation: blink-animation 0.75s steps(15, start) infinite;
+}
+
+#caret1 {
+    background-color: gray;
+    color: #fff;
+}
+
+#caret2 {
+    background-color: green;
+    color: yellow;
+}
+
+@keyframes blink-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
