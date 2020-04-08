@@ -51,6 +51,7 @@ const CaretJS = {
     appendSpan(caret) {
         let s = window.getComputedStyle(caret.input),
         tmp = document.createElement('span');
+        tmp.className = "caretjsspan";
 
         tmp.style.color = s['color'];
         caret.input.style.textShadow = '0 0 0 ' + s['color'];
@@ -58,6 +59,18 @@ const CaretJS = {
         
         //tmp.style.right = parseFloat(s['margin-right']) + parseFloat(s['border-right-width']) + parseFloat(s['padding-right']) + parseFloat(s['width']) + 'px';
         tmp.style.marginLeft = -parseFloat(caretjscss(caret.input, "width").replace("px", "")) + "px";
+
+        var spanSpace = document.createElement("SPAN");
+        spanSpace.style.fontFamily = caretjscss(caret.input, "font-family");
+        spanSpace.style.color = "transparent";
+        spanSpace.style.fontSize = caretjscss(caret.input, "font-size");
+        tmp.appendChild(spanSpace);
+
+        var spanCaret = document.createElement("SPAN");
+        spanCaret.innerText = "█";
+        spanCaret.style.fontFamily = caretjscss(caret.input, "font-family");
+        spanCaret.style.fontSize = caretjscss(caret.input, "font-size");
+        tmp.appendChild(spanCaret);
 
         caret.input.insertAdjacentElement('afterend', tmp);
     },
@@ -95,8 +108,8 @@ const CaretJS = {
                 spanCaret.style.fontFamily = caretjscss(cinput, "font-family");
                 spanCaret.style.fontSize = cinput.style.fontSize;
 
-                document.querySelector('#' + cinput.id + ' + span').appendChild(spanSpace);
-                document.querySelector('#' + cinput.id + ' + span').appendChild(spanCaret);
+                document.querySelector('#' + cinput.id + "+ .caretjsspan").appendChild(spanSpace);
+                document.querySelector('#' + cinput.id + "+ .caretjsspan").appendChild(spanCaret);
 
             }
         };
