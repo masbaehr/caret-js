@@ -1,18 +1,21 @@
 .caretjs {
     display: inline-block;
-    font-family: monospace;
 }
 
 .caretjs+span {
-    font-family: monospace;
     background: transparent;
-    position: relative;
-    right: 0;
+    position: absolute;
     margin: 0;
 }
 
 .caretjs+span>span {
     animation: blink-animation 0.75s steps(15, start) infinite;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+    -khtml-user-select: none;    /* Konqueror HTML */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;  
 }
 
 #caret1 {
