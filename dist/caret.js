@@ -82,4 +82,6 @@ const CaretJS = {
     }
 }
 
-CaretJS.initialize();
+//CaretJS.initialize();
+
+module.exports = CaretJS;
