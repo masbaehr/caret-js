@@ -30,7 +30,14 @@ const CaretJS = {
     // }
 
     onfocus(e) {
-        document.querySelector("#"+e.target.id + "+ .caretjsspan").classList.remove("caretjsspanhidden");
+
+        setTimeout(function(){ 
+            let posStart = e.target.selectionStart;
+            let posEnd = e.target.selectionEnd;
+            document.querySelector('#' + e.target.id + ' + .caretjsspan').children[0].innerText = e.target.value.substr(0, posEnd);
+            document.querySelector("#"+e.target.id + "+ .caretjsspan").classList.remove("caretjsspanhidden");
+        }, 0);
+        
     },
 
     onfocusout(e) {
@@ -41,6 +48,7 @@ const CaretJS = {
     update(e) {
         let input = e.target,
         pos = input.selectionStart,
+        posEnd = input.selectionEnd,
         max = (input.hasAttribute('maxlength') ? input.attributes.maxlength.value : -1),
         diff = 0;
 
@@ -53,7 +61,7 @@ const CaretJS = {
         }
 
         
-        document.querySelector('#' + input.id + ' + span').children[0].innerText = input.value;
+        document.querySelector('#' + input.id + ' + .caretjsspan').children[0].innerText = input.value.substr(0, posEnd);
        
     },
 
