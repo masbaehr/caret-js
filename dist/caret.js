@@ -29,6 +29,15 @@ const CaretJS = {
     //         document.querySelector('.caretjs + span').style.color = Caret.color = 'transparent';    
     // }
 
+    onfocus(e) {
+        document.querySelector("#"+e.target.id + "+ .caretjsspan").classList.remove("caretjsspanhidden");
+    },
+
+    onfocusout(e) {
+        document.querySelector("#"+e.target.id + "+ .caretjsspan").classList.add("caretjsspanhidden");
+    },
+
+
     update(e) {
         let input = e.target,
         pos = input.selectionStart,
@@ -51,7 +60,7 @@ const CaretJS = {
     appendSpan(caret) {
         let s = window.getComputedStyle(caret.input),
         tmp = document.createElement('span');
-        tmp.className = "caretjsspan";
+        tmp.className = "caretjsspan caretjsspanhidden";
 
         tmp.style.color = s['color'];
         caret.input.style.textShadow = '0 0 0 ' + s['color'];
@@ -86,6 +95,11 @@ const CaretJS = {
         bgColor = s['background-color'];
 
         input.onkeydown = input.onkeyup = CaretJS.update;
+
+        input.addEventListener("focusin", CaretJS.onfocus);
+        input.addEventListener("focusout", CaretJS.onfocusout);
+      
+
         //setInterval(this.blink, 500);
         let tmp = new Caret(id, color, bgColor);
         CaretJS.carets[id] = tmp;
